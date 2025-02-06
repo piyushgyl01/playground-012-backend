@@ -2,13 +2,67 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-const { initialiseDatabase } = require("./db/db.connection.js");
+const { initialiseDatabase } = require("./db/db.connect.js");
 const { Movies } = require("./models/movies.model.js");
 
 app.use(cors());
 app.use(express.json());
 
 initialiseDatabase();
+
+// const sampleMovies = [
+//   {
+//     name: "The Shawshank Redemption",
+//     director: "Frank Darabont",
+//     genre: "Drama",
+//   },
+//   {
+//     name: "Inception",
+//     director: "Christopher Nolan",
+//     genre: "Sci-Fi",
+//   },
+//   {
+//     name: "Pulp Fiction",
+//     director: "Quentin Tarantino",
+//     genre: "Crime",
+//   },
+//   {
+//     name: "The Dark Knight",
+//     director: "Christopher Nolan",
+//     genre: "Action",
+//   },
+//   {
+//     name: "Goodfellas",
+//     director: "Martin Scorsese",
+//     genre: "Crime",
+//   },
+//   {
+//     name: "Interstellar",
+//     director: "Christopher Nolan",
+//     genre: "Sci-Fi",
+//   },
+//   {
+//     name: "The Godfather",
+//     director: "Francis Ford Coppola",
+//     genre: "Crime",
+//   },
+//   {
+//     name: "Fight Club",
+//     director: "David Fincher",
+//     genre: "Drama",
+//   },
+// ];
+
+// const addMovies = async (data) => {
+//   try {
+//     const movies = await Movies.insertMany(data);
+//     console.log(movies);
+//   } catch (error) {
+//     console.log("UNABLE TO ADD THE DATA", error);
+//   }
+// };
+
+// addMovies(sampleMovies);
 
 app.get("/movies", async (req, res) => {
   try {
